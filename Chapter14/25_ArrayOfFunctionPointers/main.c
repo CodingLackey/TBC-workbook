@@ -11,6 +11,15 @@ void Transpose(char* str);//TODO: add a new menu
 
 int main()
 {
+	char options[] = { 'u', 'l' };
+	int n = sizeof(options) / sizeof(char);
+
+	typedef void (*FUNC_TYPE)(char*);
+	FUNC_TYPE operations[] = { ToUpper, ToLower };
+
+	printf("Enter a string\n >> ");
+
+	char input[100];
 
 
 	while (true)
@@ -35,6 +44,7 @@ void update_string(char* str, int(*pf)(int))
 
 void ToUpper(char* str)
 {
+
 
 }
 
