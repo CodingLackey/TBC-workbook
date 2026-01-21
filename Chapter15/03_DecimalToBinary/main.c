@@ -6,14 +6,24 @@
 #include <stdbool.h>
 
 unsigned char to_decimal(const char bi[]);
-void print_binary(const unsigned char num);
+void Myprint_binary(const unsigned char num);
+print_birnary(const unsigned char num);
 
 int main()
 {
 
 
+	unsigned char i = to_decimal("01000110");
+	unsigned char mask = to_decimal("00000101");
 
 
+	Myprint_binary(i);
+	Myprint_binary(mask);
+	Myprint_binary(i & mask);
+
+	print_birnary(i);
+	print_birnary(mask);
+	print_birnary(i & mask);
 
 	/*
 		Decimal to binary
@@ -32,13 +42,55 @@ int main()
 	return 0;
 }
 
-void print_binary(const unsigned char num)
+print_birnary(const unsigned char num)
 {
+	printf("Decimal %3d \t == Binanry ", num);
 
+	const size_t bits = sizeof(num) * 8;
+	for (size_t i = 0; i < bits; ++i)
+	{
+		const unsigned char mask =
+			(unsigned char)pow((double)2, (double)(bits - 1 - i));
+		if ((num & mask) == mask)
+			printf("%d", 1);
+		else
+			printf("%d", 0);
+	}
+	printf("\n");
 }
 
-//unsigned char to_decimal(const char bi[])
-//{
-//
-//}
+void Myprint_binary(const unsigned char num)
+{
+	printf("MyPrint Decimal %d \t == Binanry ", num);
+	unsigned char a = 2;
+	unsigned char mask = 128;
+	for (int i = 0; i < 8; i++)
+	{
+		if (num & mask)
+		{
+			printf("1");
+		}
+		else
+		{
+			printf("0");
+		}
+		mask = mask / a;
+	}
+	printf("\n");
+}
+
+unsigned char to_decimal(const char bi[])
+{
+	const size_t length = strlen(bi);
+	int sum = 0;
+	for (int i = 0; i < length; i++) {
+		if (bi[i] == '1')
+			sum += (int)pow(2, length - (i + 1));
+		else if (bi[i] != '0') {
+			printf("Please Input '0' or '1'");
+			exit(1);
+		}			
+	}
+	return sum;
+}
 
