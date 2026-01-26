@@ -34,49 +34,87 @@ int main()
 	bool has_amulet = false;
 	*/
 
-
-
-
+	char flags = 0;
+	char_binary(flags);
 
 	printf("\nTurning Bits On (Setting Bits)\n");
 
-
-
-
+	flags = flags | MASK_SWORD;
+	char_binary(flags);
+	flags |= MASK_AMULET;
+	char_binary(flags);
 
 	printf("\nTurning Bits Off (Clearning Bits)\n");
 
-
-
-
+	flags = flags | MASK_POTION;
+	char_binary(flags);
+	flags = flags & ~MASK_POTION; // 사용할 때는 Not을 이용해 Masking
+	char_binary(flags);
 
 	printf("\nToggling Bits\n");
 
+	flags = flags ^ MASK_HAMMER; // 토글링은 XOR 연산자로 가능 
+	char_binary(flags);
 
+	flags = flags ^ MASK_HAMMER;
+	char_binary(flags);
 
-
+	flags = flags ^ MASK_HAMMER;
+	char_binary(flags);
 
 	printf("\nChecking the Value of a Bit\n");
 
+	if ((flags & MASK_KEY) == MASK_KEY)
+		printf(">> You can enter. \n");
+	else
+		printf(">> You can not enter. \n");
 
+	flags |= MASK_KEY;
 
-
+	if ((flags & MASK_KEY) == MASK_KEY)
+		printf(">> You can enter. \n");
+	else
+		printf(">> You can not enter. \n");
 
 	printf("\nTrimming\n");
 
-
-
-
+	int int_flag = 0xffffffff;
+	int_binary(int_flag);
+	int_flag &= 0xff;
+	
+	int_binary(int_flag);
 
 	return 0;
 }
 
 void char_binary(const char num)
 {
+	printf("Decimal %3d\t == Binary ", num);
+	const size_t bits = sizeof(num) * 8;
 
+	for (size_t i = 0; i < bits; ++i) 
+	{
+		const char mask = 1 << (bits - 1- i);
+		if ((num & mask) == mask)
+			printf("1");
+		else
+			printf("0");
+	}	
+	printf("\n");
 }
 
 void int_binary(const int num)
 {
+	printf("Decimal %3d\t == Binary ", num);
+	const size_t bits = sizeof(num) * 8;
 
+	for (size_t i = 0; i < bits; ++i)
+	{
+		const int mask = 1 << (bits - 1 - i);
+		if ((num & mask) == mask)
+			printf("1");
+		else
+			printf("0");
+	}
+	printf("\n");
 }
