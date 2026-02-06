@@ -39,7 +39,9 @@ int main()
 		/Zc:trigraphs
 	*/
 
-
+	int arr[3] = { 1, 2, 3 };
+	//printf("arr??(0??) == %d\n", arr ? ? (0 ? ? ));
+	//printf("arr[0] == %d\n", arr[0]);
 
 
 
@@ -54,11 +56,13 @@ int main()
 		%>				}
 		%:				#
 	*/
-
+		
+	printf("arr<:1:> == %d", arr<:1 :>);
 
 
 	/* Two physical lines vs One logical line */
 
+	printf("This is a very very very very long long long long long long");
 
 
 	
