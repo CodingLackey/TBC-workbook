@@ -62,7 +62,8 @@ int main()
 
 	/* Two physical lines vs One logical line */
 
-	printf("This is a very very very very long long long long long long");
+	printf("This is a very \
+		very very very long long long long long long");
 
 
 	
@@ -72,7 +73,8 @@ int main()
 		Whitespace characters -> a single space
 	*/
 
-
+	int/* a variable to count a number*/n = 1;
+	// int n = 1;
 
 	return 0;
 }
