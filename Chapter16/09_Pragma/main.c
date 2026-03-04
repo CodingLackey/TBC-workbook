@@ -17,8 +17,8 @@ struct s {
 
 int main()
 {
-	struct s A;
-	printf("Size of A is: %d", sizeof(A));
+	//struct s A;
+	//printf("Size of A is: %d", sizeof(A));
 
 	return 0;
 }

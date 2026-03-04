@@ -21,9 +21,10 @@ inline int foo()
 // Driver code 
 int main()
 {
+	int ret;
 
-
-
+	ret = foo();
+	printf("Output is : %d\n", ret);
 
 	return 0;
 }
