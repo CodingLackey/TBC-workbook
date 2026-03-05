@@ -19,20 +19,14 @@ void thankyou(void)
 int main()
 {
 	printf("Purchased?\n");
+	if (getchar() == 'y')
+		atexit(thankyou); // 함수 포인터
 
-
+	while (getchar() != '\n');
 
 	printf("Goodbye message ?\n");
-
-
-
-	/*
-		exit(0);
-	*/
-
-	/*
-		qsort();
-	*/
+	if (getchar() == 'y')
+		atexit(goodbye);
 
 	return 0;
 }

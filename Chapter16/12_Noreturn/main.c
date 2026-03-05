@@ -1,8 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
+
 	return 0;
 }
 
@@ -15,7 +17,7 @@ int main()
 
 // causes undefined behavior if i <= 0
 // exits if i > 0
-noreturn void stop_now(int i) // or _Noreturn void stop_now(int i)
+_Noreturn void stop_now(int i) // or _Noreturn void stop_now(int i)
 {
 	if (i > 0) exit(i);
 }
