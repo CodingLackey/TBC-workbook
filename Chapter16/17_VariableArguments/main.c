@@ -19,24 +19,53 @@ double vaf4(...); // Not OK, no parameter.
 4. Use a macro to access the argument list.
 */
 
-//double average(int, ...);
-//double average2(char* format_string, ...);
+double average(int, ...);
+double average2(char* format_string, ...);
 
 int main()
 {
+	double a, b;
+	a = average(2, 1.1, 2.2, 3.3);
+	b = average(6, 1.1, 2.2, 3.3, 4.4, 5.5, 6.6);
+	
+	printf("%lf\n", a);
+	printf("%lf\n", b);
 
+	double a1, a2;
 
+	a1 = average2("dd", 1.1, 2.2, 3.3);
+	a2 = average2("ddd", 1.1, 2.2, 3.3, 4.4, 5.5, 6.6);
 
+	printf("%lf %lf\n", a1, a2);
 
 	return 0;
 }
 
-//double average(int num, ...)
-//{
-//
-//}
-//
-//double average2(char* format_string, ...)
-//{
-//
-//}
+double average(int num, ...)
+{
+	va_list ap;
+	double sum = 0.0;
+	int i;
+
+	va_start(ap, num);
+	for (int i = 0; i < num; i++)
+		sum += va_arg(ap, double);
+	va_end(ap);
+
+	return sum / (double)num;
+}
+
+double average2(char* format_string, ...)
+{
+	int num = strlen(format_string);
+
+	va_list ap;
+	double sum = 0.0;
+	int i;
+	va_start(ap, format_string); // 다음 자리에 VLA를 들어 온다는 것을 알려주는 것
+	for (int i = 0; i < num; i++)
+		sum += va_arg(ap, double);
+	va_end(ap);
+
+	return sum / (double)num;
+}
